@@ -1,0 +1,39 @@
+.navbar {
+  background-color: rgb(233, 130, 5);
+}
+#navbarSupportedContent {
+  font-size: large;
+  font-weight: bold;
+  font-style: normal;
+  color: rgb(66, 38, 4);
+}
+.carousel-item img {
+  margin: auto;
+}
+.lolo {
+  background-color: rgb(233, 130, 5);
+  font-size: large;
+  font-weight: bold;
+  color: rgb(66, 38, 4);
+}
+.navbar .navbar-brand {
+  color: rgb(66, 38, 4);
+  font-style: normal;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+.password {
+  background-color: rgb(241, 186, 119);
+  color: rgb(66, 38, 4);
+  font-weight: bold;
+  font-size: large;
+}
+.completed h2 {
+  color: rgb(58, 32, 1);
+}
+.completed h3 {
+  color: rgb(107, 61, 5);
+}
+.completed h4 {
+  color: rgb(206, 116, 6);
+}

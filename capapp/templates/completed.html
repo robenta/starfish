@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Transaction completed
+{% endblock title %}
+
+{% block content %}
+
+<div class="container-fluid mt-5 mb-5">
+    <div class="row mb-5">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3"></div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 p-5 completed">
+            <h2>Dear <span style="color: rgb(218, 121, 4);">{{user.username|title}}</span> your Transaction is completed!</h2>
+            <h3>Thanks for your patronage.</h3>
+            <h4>You will receive your delivery within 24 hours.</h4>
+        </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3"></div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+

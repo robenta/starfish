@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block banner %} {% include "banner.html" %} {% endblock banner %}
+
+{% block content %}
+ <!-- content section -->
+<div class="container-fluid">
+    <div class="container-fluid mt-5 mb-5">
+      <h1>Featured Products</h1>
+      <div class="row">
+        {% if featured %}
+        {% for item in featured %}
+        <!-- box1 -->
+        <div class="col-12 col-sm-12 col-md-6 col-lg-3 mt-2 mb-2 w-25">
+          <div class="card text-center">
+            <img src="{{item.image.url}}" class="card-img-top w-50 mx-auto mt-4">
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              <p class="card-text"> # {{item.price}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    
+ <!-- new box 2-->
+
+  <div class="container-fluid mt-5 mb-5">
+    <h1>Latest Products</h1>
+    <div class="row">
+      {% if latest %}
+      {% for item in latest %}
+      <!-- box1 -->
+      <div class="col-12 col-sm-12 col-md-6 col-lg-3 mt-2 mb-2 w-25">
+        <div class="card text-center">
+          <img src="{{item.image.url}}" class="card-img-top w-50 mx-auto mt-4">
+          <div class="card-body mt-3">
+            <h5 class="card-title">{{item.name}}</h5>
+            <p class="card-text"> # {{item.price}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+</div>
+
+{% endblock content%}

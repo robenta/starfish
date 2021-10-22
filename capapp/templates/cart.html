@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load mathfilters %}
+
+{% load humanize %}
+
+{% block title %}Shopcart{% endblock title %}
+
+{% block content %}
+<div class="container-fluid mt-5 mb-5">
+    <h1>Shopcart</h1>
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3"></div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-9">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">delete</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Quantity Update</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                    {% if cart %}
+                        {% for item in cart %}
+                            <tr>
+                                <td>
+                                    <form method="POST" action="{% url 'deleteitem' %}"> 
+                                        {% csrf_token %}
+                                            <input type="hidden" name="itemid" value="{{item.id}}">
+                                            <button type="submit" class="btn btn-danger">&times;</button>
+                                    </form>
+                                </td>
+                                <td scope="row">{{item.product.name}}</td>
+                                <td><img src="{{item.product.image.url}}" width="70px"></td>
+                                <td>{{item.product.price|floatformat:2|intcomma}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'increase' %}"> 
+                                        {% csrf_token %}
+                                        <input type="number" name="itemval" value="{{item.quantity}}" min="{{item.min}}" max="{{item.max}}" style="width: 40px;">
+                                            <input type="hidden" name="valid" value="{{item.id}}">
+                                            <button type="submit" class="btn btn-success">&checkmark;</button>
+                                    </form>
+                                </td>
+                                <td>{{item.product.price|mul:item.quantity|floatformat:2|intcomma}}</td>
+                            </tr>
+                        {% endfor %}      
+                    {% endif %}
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Subtotal: {{subtotal}}</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Vat: {{vat}}</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total: {{total}}</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="{% url 'checkout' %}">Checkout</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> 
+</div>
+{% endblock content %}
